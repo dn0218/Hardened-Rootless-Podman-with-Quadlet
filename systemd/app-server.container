@@ -1,0 +1,15 @@
+[Unit]
+Description=Hardened Nginx Rootless Container
+
+[Container]
+Image=docker.io/library/nginx:latest
+ContainerName=app-server
+PublishPort=8080:80
+AutoUpdate=image
+
+[Service]
+Restart=always
+
+[Install]
+WantedBy=default.target
+
