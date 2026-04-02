@@ -18,3 +18,22 @@ sysadmin:165536:65536
 [danny@rhel ~]$ sudo loginctl enable-linger sysadmin
 ```
 In Rootless mode, exit from SSH might cause container stops. Enable linger feature to prevent this.
+
+2. **Deploy Container**:
+Switch to sysadmin and create the Quadlet file:
+```bash
+mkdir -p ~/.config/containers/systemd/
+```
+Place 'app-server.container' in this directory
+
+3. **Activate**:
+```bash
+systemctl --user daemon-reload
+systemctl --user start app-server.service
+```
+
+## 📊 Technical Stack
+- Container Engine: Podman (Rootless mode)
+- Init System: Systemd (User Session)
+- Networking: PASTA (High-performance user-mode networking)
+- Base Image: Nginx (Mainline)
